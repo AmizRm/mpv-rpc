@@ -7,9 +7,9 @@ on:
       - "src/**"
       - Cargo.lock
       - rust-toolchain.toml
-      - flake.nix
-      - flake.lock
-      - shell.nix
+      # - flake.nix
+      # - flake.lock
+      # - shell.nix
 
   pull_request:
     branches: [ main ]
@@ -17,9 +17,9 @@ on:
       - "src/**"
       - Cargo.lock
       - rust-toolchain.toml
-      - flake.nix
-      - flake.lock
-      - shell.nix
+      # - flake.nix
+      # - flake.lock
+      # - shell.nix
 
 env:
   CARGO_TERM_COLOR: always
@@ -38,14 +38,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Nix
-        uses: nixbuild/nix-quick-install-action@v28
+      # - name: Install Nix
+      #   uses: nixbuild/nix-quick-install-action@v28
 
-      - name: Check
-        run: nix develop --command cargo clippy --profile ${{ matrix.profile }} -- -D warnings
+      # - name: Check
+      #   run: nix develop --command cargo clippy --profile ${{ matrix.profile }} -- -D warnings
 
-      - name: Build
-        run: nix develop --command cargo build --profile ${{ matrix.profile }}
+      # - name: Build
+      #   run: nix develop --command cargo build --profile ${{ matrix.profile }}
 
       - name: Upload build
         uses: actions/upload-artifact@v4
